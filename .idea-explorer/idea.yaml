@@ -1,0 +1,32 @@
+idea:
+  title: Story CoT
+  domain: nlp
+  hypothesis: "Training language models to use chain-of-thought (CoT) reasoning in\
+    \ the form of human-like stories\u2014recounting memories or narrating ideas about\
+    \ situations\u2014will result in different or improved performance compared to\
+    \ standard CoT approaches, particularly on tasks such as physics problem modeling.\
+    \ This approach may reveal whether models can produce story-like CoTs or if current\
+    \ CoT methods exploit hidden patterns in large language models.\n"
+  background:
+    description: 'Current chain-of-thought (CoT) methods simulate a fuzzy reasoning
+      process, but it is hypothesized that humans actually think in stories. This
+      idea proposes training a model from base to post-training to use CoTs in the
+      form of stories, similar to how people recount memories or narrate ideas about
+      situations and their expected outcomes. The research questions whether this
+      story-based CoT would perform better for certain tasks, such as physics problem
+      modeling, and whether models are capable of producing such CoTs or if existing
+      CoT methods leverage special hidden patterns in current large language models.
+
+      '
+  constraints:
+    compute: cpu_only
+    time_limit: 3600
+    budget: 100
+  metadata:
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/mhakpZmiPP1PFynKutlW
+    idea_id: story_cot_20251123_113909_c5b21798
+    created_at: '2025-11-23T11:39:09.254911'
+    status: submitted
+    github_repo_name: story-cot-nlp-2953
+    github_repo_url: https://github.com/ChicagoHAI/story-cot-nlp-2953
