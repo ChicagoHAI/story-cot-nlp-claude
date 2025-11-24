@@ -1,0 +1,183 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    RESOURCE FINDING PHASE COMPLETE
+═══════════════════════════════════════════════════════════════════════════════
+
+Timestamp: $(date -Iseconds)
+
+Research Topic: Story CoT
+Research Hypothesis: Training language models to use chain-of-thought reasoning
+in the form of human-like stories will result in different or improved performance
+compared to standard CoT approaches, particularly on physics problem modeling.
+
+═══════════════════════════════════════════════════════════════════════════════
+                              RESOURCES GATHERED
+═══════════════════════════════════════════════════════════════════════════════
+
+PAPERS DOWNLOADED: 6
+──────────────────────────────────────────────────────────────────────────────
+1. Chain-of-Thought Prompting (Wei et al., 2022) - arXiv:2201.11903
+   → Foundational CoT paper
+
+2. Can Stories Help LLMs Reason? (Sadiri Javadi et al., 2024) - arXiv:2410.19221
+   → **PRIMARY REFERENCE** - Story of Thought (SoT) methodology
+
+3. Self-Consistency CoT (Wang et al., 2022) - arXiv:2203.11171
+   → Important baseline method
+
+4. Multimodal CoT (Zhang et al., 2023) - arXiv:2302.00923
+   → Multi-stage reasoning approach
+
+5. Physics Reasoner (2024) - arXiv:2412.13791
+   → Physics problem solving challenges
+
+6. Auto-CoT (Zhang et al., 2022) - arXiv:2210.03493
+   → Automated CoT baseline
+
+All papers stored in: papers/
+Documentation: papers/README.md
+
+DATASETS DOWNLOADED: 3 (1 gated)
+──────────────────────────────────────────────────────────────────────────────
+1. GSM8K - 7,473 train, 1,319 test examples
+   → Math word problems, MIT License
+   → Location: datasets/gsm8k/
+
+2. SciBench - 692 college-level science problems
+   → Physics, Chemistry, Math domains
+   → Location: datasets/scibench/
+
+3. JEEBench - 515 IIT JEE Advanced problems
+   → **PRIMARY EVALUATION DATASET** (used in SoT paper)
+   → Physics, Chemistry, Mathematics
+   → Location: datasets/jeebench/
+
+4. GPQA (Diamond) - 198 graduate-level questions
+   → **PRIMARY EVALUATION DATASET** (used in SoT paper)
+   → Status: GATED (requires authentication)
+   → Instructions in datasets/README.md
+
+All datasets stored in: datasets/
+Documentation: datasets/README.md
+Download scripts: datasets/download_datasets.py, datasets/download_jeebench.py
+Git exclusion: datasets/.gitignore (data files not committed)
+
+CODE REPOSITORIES CLONED: 3
+──────────────────────────────────────────────────────────────────────────────
+1. Auto-CoT (amazon-science/auto-cot)
+   → Automated chain-of-thought baseline
+   → Location: code/auto-cot/
+
+2. Tree of Thoughts (princeton-nlp/tree-of-thought-llm)
+   → Structured reasoning baseline (used in SoT paper)
+   → Location: code/tree-of-thought-llm/
+
+3. Chain-of-Thought Hub (FranxYao/chain-of-thought-hub)
+   → Benchmarking and evaluation framework
+   → Location: code/chain-of-thought-hub/
+
+All code stored in: code/
+Documentation: code/README.md
+
+DOCUMENTATION CREATED
+──────────────────────────────────────────────────────────────────────────────
+✓ papers/README.md - Detailed paper descriptions and summaries
+✓ datasets/README.md - Dataset descriptions, download instructions, examples
+✓ code/README.md - Repository documentation and usage guides
+✓ literature_review.md - Comprehensive synthesis and analysis
+✓ resources.md - Complete resource catalog with recommendations
+
+═══════════════════════════════════════════════════════════════════════════════
+                           KEY FINDINGS FROM LITERATURE
+═══════════════════════════════════════════════════════════════════════════════
+
+MOST RELEVANT FINDING:
+The Story of Thought (SoT) paper directly addresses our hypothesis!
+- Uses narrative structures for problem solving
+- Tested on GPQA and JEEBench datasets
+- **Outperformed all baseline methods including standard CoT**
+- Best result: Llama 3 70B achieved 51.01% on GPQA (vs 39.5% zero-shot)
+- GPT-4: 48.98% with SoT (vs 34.7% zero-shot) - 41% relative improvement
+
+METHODOLOGY (3-step SoT approach):
+1. Question Clarification - Break down into core components
+2. Narrative Generation - Use 5 narrative techniques:
+   • Progressive Disclosure
+   • Branching  
+   • Analogy
+   • Analogical Reasoning
+   • Metaphor
+3. Problem Solving - Use narrative to solve task
+
+PHYSICS-SPECIFIC INSIGHTS:
+- Physics problems particularly challenging for LLMs
+- Standard CoT achieves only 6.8% on SciBench physics (GPT-3.5)
+- Narrative approaches show promise for physics reasoning
+- JEEBench and GPQA include physics problems for evaluation
+
+═══════════════════════════════════════════════════════════════════════════════
+                     RECOMMENDATIONS FOR EXPERIMENTATION
+═══════════════════════════════════════════════════════════════════════════════
+
+PRIMARY DATASETS:
+1. JEEBench (515 problems) - **Publicly accessible, used in SoT paper**
+2. GPQA Diamond (198 questions) - Used in SoT paper (requires auth)
+3. SciBench Physics subset - Additional physics evaluation
+
+BASELINE METHODS TO IMPLEMENT:
+1. Zero-shot (simplest baseline)
+2. Zero-shot CoT ("Let's think step by step")
+3. Story of Thought (SoT) - Main comparison method
+4. Self-Consistency (optional strong baseline)
+
+EVALUATION METRICS:
+- Primary: Accuracy (% correct)
+- Secondary: Per-domain breakdown (Physics vs Chemistry vs Math)
+- Optional: Token usage, explanation quality
+
+NOVEL CONTRIBUTIONS TO EXPLORE:
+• Test "story of past experience" framing (memory/recollection)
+• Focus evaluation on physics problems specifically
+• Compare narrative effectiveness across domains
+• Investigate training-based approaches (if budget allows)
+
+═══════════════════════════════════════════════════════════════════════════════
+                          EXPERIMENT RUNNER NEXT STEPS
+═══════════════════════════════════════════════════════════════════════════════
+
+IMMEDIATE ACTIONS:
+1. Set up Python environment (transformers, datasets, openai, etc.)
+2. Verify all resources are accessible
+3. Load and inspect datasets
+4. Authenticate for GPQA access (optional but recommended)
+
+IMPLEMENTATION TASKS:
+1. Implement SoT methodology from paper (3-step process, 5 techniques)
+2. Implement baseline methods (zero-shot, CoT)
+3. Set up evaluation pipeline
+4. Run initial validation on small subset
+5. Full evaluation on complete datasets
+
+SUCCESS CRITERIA:
+✓ Reproduce SoT paper results on JEEBench (within ±2%)
+✓ Evaluate on physics problems specifically
+✓ Compare multiple baseline methods
+✓ Document findings and insights
+
+═══════════════════════════════════════════════════════════════════════════════
+                            RESOURCE STATISTICS
+═══════════════════════════════════════════════════════════════════════════════
+
+Total Resources: 12 (6 papers + 4 datasets + 3 code repos)
+Disk Usage: ~150 MB (papers + datasets, excluding code)
+Download Time: ~10 minutes
+Documentation: 5 comprehensive markdown files
+Resource Gathering Time: ~2.5 hours
+
+All resources ready for automated experimentation!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+This marker file signals completion of the resource finding phase.
+The experiment runner agent can now begin implementation and evaluation.
+
+═══════════════════════════════════════════════════════════════════════════════

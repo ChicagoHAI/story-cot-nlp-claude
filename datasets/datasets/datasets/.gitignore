@@ -1,0 +1,10 @@
+# Exclude all data files (can be large)
+*
+
+# But include documentation and scripts
+!.gitignore
+!README.md
+!download_datasets.py
+!download_jeebench.py
+!**/README.md
+!**/samples/
